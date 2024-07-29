@@ -8,8 +8,8 @@
     padding-top: 3.7vw;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(4, calc(min(calc(44.8vh/4),calc(100%*(4/23)))));
-    column-gap: 8.7%;
+    grid-template-columns: repeat(4, calc(100%*(4/23)));
+    column-gap: calc(100%*(2/23));
     row-gap: auto;
     list-style: none;
     border-top: rgba(255, 255, 255, 0.35) solid 2px;
