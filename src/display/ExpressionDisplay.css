@@ -1,0 +1,32 @@
+.expression {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  max-width: 100%;
+  height: 11.7vh;
+  text-align: end;
+  /* TO DO min-height: 117px; */
+}
+
+.expression-text {
+  position: absolute;
+  width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  word-wrap: break-word;
+  font-family: Geometria;
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(242, 242, 242, 1);
+  overflow-y: scroll;
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+
+.expression-text::-webkit-scrollbar {
+  display: none;
+}
