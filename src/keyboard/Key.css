@@ -1,13 +1,13 @@
+
 .key {
     font-family: Geometria;
     vertical-align: middle;
     font-weight: 500;
-    font-size: 36px;
-    line-height: 85px;
+    font-size: 2em;
     color: rgba(242, 242, 242, 1);
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    aspect-ratio: 1;
     border-radius: 50%;
     background: none;
     border: none;

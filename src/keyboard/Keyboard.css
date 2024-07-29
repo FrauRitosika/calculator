@@ -1,11 +1,16 @@
 .keyboard {
-    margin-top: 16px;
-    padding: 40px 10px 0 10px;
+    height: 46.4vh;
+    width: 100%;
+    margin-top: 1.6vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    padding-top: 3.7vw;
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: 80px;
-    column-gap: 40px;
-    row-gap: 16px;
+    justify-content: center;
+    grid-template-columns: repeat(4, calc(min(calc(44.8vh/4),calc(100%*(4/23)))));
+    column-gap: 8.7%;
+    row-gap: auto;
     list-style: none;
     border-top: rgba(255, 255, 255, 0.35) solid 2px;
   }
