@@ -1,0 +1,15 @@
+html,
+body {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(122.76deg, #FFA2A2 4.09%, #FF7B7B 91.04%);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
