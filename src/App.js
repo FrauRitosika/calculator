@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Keyboard from './keyboard/Keyboard';
 import ExpressionDisplay from './display/ExpressionDisplay';
@@ -175,16 +175,32 @@ export default function App({ keyboard = [] }) {
 
   }
 
+  const [isHorizontal, setHorizontal] = useState(false);
+  function handleHorizontalOrientation() {
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      setHorizontal(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('orientationchange', handleHorizontalOrientation());
+    return () => window.removeEventListener('orientationchange', handleHorizontalOrientation());
+  }, []);
+
   return (
     <main className="calculator-app">
       <div className="calculator">
-        <ExpressionDisplay
-          expression={expression}
-        />
-        <p className="input-display">{enteredNumberString}</p>
-        <Keyboard
-          keyboard={keyboard}
-          onClick={(key) => input(key)} />
+        <div className="calculator-input-container">
+          <ExpressionDisplay
+            expression={expression}
+          />
+          <p className="input-display">{enteredNumberString}</p>
+          <Keyboard
+            keyboard={keyboard}
+            onClick={(key) => input(key)}
+            isHorizontal={isHorizontal}
+          />
+        </div>
       </div>
     </main>
   );

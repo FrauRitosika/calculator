@@ -1,14 +1,12 @@
-import React from "react";
 import Key from "./Key";
 import './Keyboard.css';
 
-export default function Keyboard({ keyboard = [], onClick }) {
+export default function Keyboard({ keyboard = [], onClick, isHorizontal }) {
 
     return (
-        <div>
-            <ul className="keyboard">
-                {keyboard.map(key => (
-                    <li key={key.sign} >
+            <ul className={`keyboard ${isHorizontal ? 'horizontal' : ''}`}>
+                {keyboard.map((key,index) => (
+                    <li key={key.sign} className={`row-${Math.trunc(index/4)+1}`} >
                         <Key
                             sign={key.signString ? key.signString : key.sign}
                             operationName={key.operation}
@@ -16,6 +14,5 @@ export default function Keyboard({ keyboard = [], onClick }) {
                         />
                     </li>))}
             </ul>
-        </div>
     );
 }

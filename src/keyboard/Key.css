@@ -3,9 +3,11 @@
     font-family: Geometria;
     vertical-align: middle;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 2.25em;
+    line-height: 1;
     color: rgba(242, 242, 242, 1);
     text-align: center;
+    text-align: -webkit-center;
     width: 100%;
     aspect-ratio: 1;
     border-radius: 50%;
