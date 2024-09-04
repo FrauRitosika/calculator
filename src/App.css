@@ -40,7 +40,7 @@
   height: 100%;
 }
 
-.calculator-input-container {
+.calculator__container {
   margin: 0 auto;
   width: 83%;
   height: 100%;
@@ -51,7 +51,7 @@
   gap: 2em; 
 }
 
- .input-display {
+ .calculator__input-container {
   margin: 0;
   text-align: end;
   background: none;
@@ -69,10 +69,6 @@
   scrollbar-width: none;
   overflow-y: hidden;
   text-overflow: ellipsis;
-} 
-
-.expression-text::-webkit-scrollbar {
-  display: none;
 } 
 
 @media (max-width: 40em) and (orientation: portrait) {
