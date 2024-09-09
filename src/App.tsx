@@ -4,7 +4,7 @@ import Keyboard from './componets/Keyboard';
 import InputDisplay from './componets/InputDisplay';
 import OutputDisplay from './componets/OutputDisplay';
 import ErrorModal from './componets/ErrorModal';
-import { KeyInfo } from './app-handler/keyboard-setting';
+import { KeyInfo } from './keyboard-setting';
 import { InputResult } from './app-handler/input';
 
 type AppProps = {
@@ -18,18 +18,23 @@ type errorCalculate = {
   text?: string
 }
 
+enum TaskStatus {
+  InProcess = 'IN_PROCESS',
+  Resolved = 'RESOLVED',
+}
+
 const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
 
   const [isHorizontal, setHorizontal] = useState<boolean>(false);
   const [expression, setExpression] = useState<string>('');
   const [result, setResult] = useState<number>(0);
-  const [statusTask, setStatusTask] = useState<string>('IN_PROCCESS');
+  const [statusTask, setStatusTask] = useState<TaskStatus>(TaskStatus.InProcess);
   const [errorCalculate, setErrorCalculate] = useState<errorCalculate>({ isActive: false });
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [expression, result, statusTask]);
+  }, [expression,statusTask]);
 
   useEffect(() => {
     const orientationChangeHandler = () => handleHorizontalOrientation();
@@ -41,10 +46,10 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
 
     let newExperession = expression;
 
-    if (statusTask === 'RESOLVED') {
+    if (statusTask === TaskStatus.Resolved) {
       newExperession = '';
       setResult(0);
-      setStatusTask('IN_PROCCESS');
+      setStatusTask(TaskStatus.InProcess);
     }
 
     switch (key.operation) {
@@ -58,7 +63,7 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
         try {
           setResult(execute(newExperession));
           setExpression(newExperession);
-          setStatusTask('RESOLVED');
+          setStatusTask(TaskStatus.Resolved);
         } catch (error: any) {
           if (error instanceof Error) {
             setErrorCalculate({ isActive: true, text: error.message });
@@ -72,6 +77,7 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
 
       case 'cleanAll': setExpression('');
       setResult(0);
+      setStatusTask(TaskStatus.InProcess);
         break;
 
       default: break;
@@ -103,7 +109,7 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
         <div className="calculator__container">
           <InputDisplay
             className='calculator__input-container'
-            expression={`${expression}${statusTask === 'RESOLVED' && !!expression ? '=' : ''}`}
+            expression={`${expression}${statusTask === TaskStatus.Resolved && !!expression ? '=' : ''}`}
           />
           <OutputDisplay
             className='calculator__output-container'

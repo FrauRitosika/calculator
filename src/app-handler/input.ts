@@ -1,4 +1,4 @@
-import { keyboard, mapping, shadowKeyboard, KeyInfo } from './keyboard-setting';
+import { keyboard, mapping, shadowKeyboard, KeyInfo } from '../keyboard-setting';
 
 const keyboardAvailableInput = [...keyboard.map(item => item.sign), ...shadowKeyboard.map(item => item.sign), ...mapping.map(item => item.sign)];
 

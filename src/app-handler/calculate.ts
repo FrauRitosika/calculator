@@ -1,4 +1,4 @@
-import { keyboard, KeyInfo, mapping, Sign } from './keyboard-setting';
+import { keyboard, KeyInfo, mapping, Sign } from '../keyboard-setting';
 import settings from './calculate-settings.json';
 import { ValidationExpressionError } from './errors';
 
@@ -138,7 +138,7 @@ function execute(expression: string): number {
         }
         throw new ValidationExpressionError();
     }
-    
+
     throw new ValidationExpressionError();
 }
 
