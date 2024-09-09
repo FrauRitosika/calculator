@@ -3,7 +3,7 @@
   font-style: bold;
   font-weight: 700;
   src: local("Geometria"),
-    url('font/geometria_bold.otf') format("opentype")
+    url('../font/geometria_bold.otf') format("opentype")
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 500;
   src: local("Geometria"),
-    url('font/geometria_medium.otf') format("opentype")
+    url('../font/geometria_medium.otf') format("opentype")
 }
 
 .calculator-app {

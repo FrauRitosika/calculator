@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Keyboard from './componets/Keyboard';
-import InputDisplay from './componets/InputDisplay';
-import OutputDisplay from './componets/OutputDisplay';
-import ErrorModal from './componets/ErrorModal';
-import { KeyInfo } from './keyboard-setting';
-import { InputResult } from './app-handler/input';
+import Keyboard from './Keyboard';
+import InputDisplay from './InputDisplay';
+import OutputDisplay from './OutputDisplay';
+import ErrorModal from './ErrorModal';
+import { KeyInfo } from '../keyboard-setting';
+import { InputResult } from '../app-handler/input';
 
 type AppProps = {
   keyboard: Array<KeyInfo>,

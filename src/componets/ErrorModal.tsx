@@ -24,7 +24,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ onClick, className = '', errorT
     return (
         <div className="modal">
             <div ref={modalRef} className={`modal__data ${className}`}>
-                <button onClick={onClick} />
+                <button className="modal__close close-button" onClick={onClick} />
                 <h2 className='modal__title'>Ошибка вычисления</h2>
                 {errorText}
             </div>
