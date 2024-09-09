@@ -1,0 +1,21 @@
+.result {
+    margin: 0;
+    text-align: right;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    font-size: 3.5em;
+    line-height: 1.43;
+    font-weight: 700;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+  } 
+
+  .result-text {
+    margin: 0;
+  }
