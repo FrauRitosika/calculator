@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './componets/App';
 import ErrorBoundary from './componets/error-boundary/ErrorBoundary';
 import { keyboard } from './keyboard-setting';
 import { input } from './app-handler/input';
