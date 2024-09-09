@@ -1,6 +1,6 @@
 import React from "react";
 import Key from "./Key";
-import { KeyInfo } from '../keyboard-handler/keyboard-setting';
+import { KeyInfo } from '../app-handler/keyboard-setting';
 import './Keyboard.css';
 
 type KeyboardProps = {

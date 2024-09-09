@@ -1,14 +1,19 @@
 {
   "strict": true,
   "include": [
-    "src"
+    "src",
+    "tests"
   ],
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
     "outDir": "./build",
     "target": "es2017",
     "module": "es2022",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "jsx": "react",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

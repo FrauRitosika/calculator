@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Keyboard from './componets/Keyboard';
 import InputDisplay from './componets/InputDisplay';
-import OutputDisplay from './componets/OutputDisplay'
-import { KeyInfo } from './keyboard-handler/keyboard-setting';
-import { InputResult } from './keyboard-handler/input';
+import OutputDisplay from './componets/OutputDisplay';
+import ErrorModal from './componets/ErrorModal';
+import { KeyInfo } from './app-handler/keyboard-setting';
+import { InputResult } from './app-handler/input';
 
 type AppProps = {
   keyboard: Array<KeyInfo>,
   input: (sign: string) => InputResult,
   execute: (expression: string) => number
+}
+
+type errorCalculate = {
+  isActive: boolean
+  text?: string
 }
 
 const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
@@ -18,6 +24,7 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
   const [expression, setExpression] = useState<string>('');
   const [result, setResult] = useState<number>(0);
   const [statusTask, setStatusTask] = useState<string>('IN_PROCCESS');
+  const [errorCalculate, setErrorCalculate] = useState<errorCalculate>({ isActive: false });
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -47,12 +54,24 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
       case 'input': setExpression(`${newExperession}${key.sign}`);
         break;
 
-      case 'execute': setResult(execute(newExperession));
-        setExpression(newExperession);
-        setStatusTask('RESOLVED');
+      case 'execute':
+        try {
+          setResult(execute(newExperession));
+          setExpression(newExperession);
+          setStatusTask('RESOLVED');
+        } catch (error: any) {
+          if (error instanceof Error) {
+            setErrorCalculate({ isActive: true, text: error.message });
+          }
+          else {
+            throw new Error('Неизвестная ошибка');
+          }
+        }
+
         break;
 
       case 'cleanAll': setExpression('');
+      setResult(0);
         break;
 
       default: break;
@@ -74,6 +93,10 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
     }
   };
 
+  function closeError(): void {
+    setErrorCalculate({ isActive: false });
+  }
+
   return (
     <main className="calculator-app">
       <div className="calculator">
@@ -92,6 +115,7 @@ const App: React.FC<AppProps> = ({ keyboard = [], input, execute }) => {
             isHorizontal={isHorizontal}
           />
         </div>
+        {errorCalculate.isActive && (<ErrorModal onClick={closeError} errorText={errorCalculate.text ?? ''} />)}
       </div>
     </main >
   );

@@ -43,6 +43,10 @@ const shadowKeyboard: Array<KeyInfo> = [
     {
         operation: 'cleanAll',
         sign: 'Escape',
+    },
+    {
+        operation: 'clean',
+        sign: 'Backspace',
     }
 ]
 
